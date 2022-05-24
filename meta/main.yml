@@ -1,0 +1,17 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: smartmon-textfile-collector
+  author: ls1admin
+  description: Prometheus S.M.A.R.T. Monitoring textfile collector
+  company: "Midwestern Mac, LLC"
+  license: "license (MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
