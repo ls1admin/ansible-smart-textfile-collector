@@ -1,0 +1,26 @@
+- name: Create smartmon script directory
+  file:
+    path: "{{ script_dir }}"
+    state: directory
+  become: true
+
+- name: Clone prometheus textfile script repo
+  get_url:
+    url: "https://raw.githubusercontent.com/prometheus-community/node-exporter-textfile-collector-scripts/{{ commit_hash }}/smartmon.sh"
+    dest: "{{ script_dir }}/smartmon.sh"
+    mode: 0700
+  become: true
+
+- name: Make sure sponge is installed
+  apt:
+    name: moreutils
+    state: present
+  become: true
+
+- name: Setup cron job for executing smartmon script
+  cron:
+    name: Node Exporter smartmon script
+    minute: "{{ cron_minutes }}"
+    user: root
+    job: "{{ script_dir }}/smartmon.sh | sponge {{ textfile_dir }}/smartmon.prom"
+  become: true

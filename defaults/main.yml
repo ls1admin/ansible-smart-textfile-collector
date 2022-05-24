@@ -1,0 +1,7 @@
+script_dir: /opt/node-exporter-textfile-collector-scripts
+textfile_dir: /var/lib/node_exporter
+commit_hash: 4bb930b565879696245f006e737b9e1ce6b3bd6d
+
+# interval
+cron_minutes: "0"
+cron_hours: "*/6"
